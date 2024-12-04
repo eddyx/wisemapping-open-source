@@ -101,7 +101,7 @@ app:
   #      domain:
   # Account registration options dialog
   registration:
-    enabled: true
+    enabled: false
     captcha:
       enabled: false
       siteKey: some-key
