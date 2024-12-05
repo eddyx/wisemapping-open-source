@@ -35,6 +35,7 @@ public class RestJwtUser {
 
     private String email;
     private String password;
+    private String recaptcha;
 
     public RestJwtUser(@NotNull  String email, @NotNull String password) {
         this.setEmail(email);
@@ -55,5 +56,9 @@ public class RestJwtUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRecaptcha() {
+        return recaptcha;
     }
 }
