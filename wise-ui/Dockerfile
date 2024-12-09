@@ -6,14 +6,15 @@ WORKDIR /app
 ARG VERSION="6.0.1"
 
 # Install dependencies
-RUN mkdir webapp && npm pack @wisemapping/webapp@${VERSION} && tar -xvzf wisemapping-webapp-${VERSION}.tgz -C webapp
+COPY dist.tgz wisemapping-webapp-${VERSION}.tgz
+RUN mkdir webapp && tar -xvzf wisemapping-webapp-${VERSION}.tgz -C webapp
 
 # Use Nginx as the production server
 FROM nginx:latest
 LABEL maintainer="Paulo Gustavo Veiga <pveiga@wisemapping.com>"
 
 ## Copy the built React app to Nginx's web server directory
-COPY --from=builder /app/webapp/package/dist/* /usr/share/nginx/html/
+COPY --from=builder /app/webapp/packages/webapp/dist/* /usr/share/nginx/html/
 
 ADD nginx.conf .
 COPY nginx.conf /etc/nginx/conf.d/default.conf

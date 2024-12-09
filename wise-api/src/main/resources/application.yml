@@ -87,7 +87,7 @@ app:
     max-inactive: 20
   # Google OAuth Authentication
   security:
-    #    corsAllowedOrigins: https://dev.wisemapping.com
+    corsAllowedOrigins: http://wise-ui
     oauth2:
       google:
         clientSecret: <google-oath>
